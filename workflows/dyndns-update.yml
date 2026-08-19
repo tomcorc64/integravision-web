@@ -1,0 +1,16 @@
+name: Update deSEC DynDNS
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-dyndns:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update deSEC dyndns
+        run: |
+          curl -s -u "integravisionstudio.dedyn.io:${{ secrets.DESEC_DYNDNS_TOKEN }}" \
+            "https://update.dedyn.io/"
+        env:
+          DESEC_DYNDNS_TOKEN: ffqKNiLwAPVWa64zSJWba44fUcEb
